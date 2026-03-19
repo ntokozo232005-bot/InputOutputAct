@@ -38,25 +38,14 @@ class MainActivity : AppCompatActivity() {
             displayTxt.text = "Welcome ,${editNameTxt.text}!"
 
             var greeting: String
-            var zulu: Boolean = zuluBtn.isChecked
-            var age: Int = 20
-
-
-            // get the switch that turns on the Zulu greeting
-            val switchBtn = findViewById<Switch>(R.id.switchBtn)
-
-            // add code to the button that happens when its clicked
-            button?.setOnClickListener {
-                var greeting: String
-                if (switchBtn.isChecked) {
-                    greeting = "Sawubona ,${editNameTxt.text}!"
+            if (zuluBtn.isChecked) {
+                greeting = "Sawubona ,${editNameTxt.text}!"
+            } else {
+                // easter egg for Sam
+                if (editNameTxt.text.toString() == "Sam") {
+                    greeting = "Hello ,${editNameTxt.text}!"
                 } else {
-                    // easter egg for sam
-                    if (editNameTxt.text.toString() == "Sam") {
-                        greeting = "Yo, ${editNameTxt.text}!"
-                    } else {
-                        greeting = " Greetings,${editNameTxt.text}!"
-                    }
+                    greeting = "Hello ,${editNameTxt.text}!"
 
                 }
                 displayTxt.text = greeting
