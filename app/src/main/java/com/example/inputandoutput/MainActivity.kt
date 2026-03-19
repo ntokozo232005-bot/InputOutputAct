@@ -22,39 +22,52 @@ class MainActivity : AppCompatActivity() {
 
         // get the button using the id we set on the user interface
         val button = findViewById<Button>(R.id.clickBtn)
-        val displayTxt = findViewById<TextView>(R.id.displayTxt)
-        val editNameTxt = findViewById<EditText>(R.id.editNameTxt)
+
+        // get the text view and edit text
+        val welcomeTxt =
+            findViewById<TextView>(R.id.displayTxt)
+        val editNameTxt =
+            findViewById<EditText>(R.id.editNameTxt)
+
+
+        //add code to the button that happens when its clicked
+        button?.setOnClickListener {
+            Toast.makeText(this@MainActivity,
+                "Button Clicked", Toast.LENGTH_SHORT).show()
+        }
+            welcomeTxt.text = "Welcome ,${editNameTxt.text}!"
+
+        // get the switch that turns on the Zulu greeting
         val zuluBtn = findViewById<Switch>(R.id.switchBtn)
 
-
+        // add the  age
+        val age: Int = 20
 
         // add code to the button that happens when its clicked
         button?.setOnClickListener {
-            Toast.makeText(
-                this@MainActivity,
-                "Button clicked ", Toast.LENGTH_LONG
-            ).show()
-
-            displayTxt.text = "Welcome ,${editNameTxt.text}!"
-
             var greeting: String
             if (zuluBtn.isChecked) {
                 greeting = "Sawubona ,${editNameTxt.text}!"
             } else {
-                // easter egg for Sam
-                if (editNameTxt.text.toString() == "Sam") {
-                    greeting = "Hello ,${editNameTxt.text}!"
+                // Easter egg for Sam
+                greeting = if (editNameTxt.text.toString() == "Sam") {
+                    "Hello ,${editNameTxt.text}!"
                 } else {
-                    greeting = "Hello ,${editNameTxt.text}!"
+                    "Hello ,${editNameTxt.text}!"
 
                 }
-                displayTxt.text = greeting
+            }
+            welcomeTxt.text = greeting
+            val zulu: Boolean = zuluBtn.isChecked
+            if (zulu) {
+                welcomeTxt.text = "Sawubona ,${editNameTxt.text}!"
+            } else {
+                // easter egg for Sam/Samantha
+                greeting = "Hello ,${editNameTxt.text}!"
 
         }
 
         }
-
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
