@@ -50,7 +50,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 displayTxt.text = greeting
 
-            }
+        }
+
         }
 
 
