@@ -13,6 +13,23 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+    enum class Languages {
+        ENGLISH,
+        NDEBELE,
+        PEDI,
+        SOTHO,
+        SWATI,
+        TSONGA,
+        TSWANA,
+        VENDA,
+        XHOSA,
+        ZULU,
+        AFRIKAANS,
+    }
+        
+
+
+
     @SuppressLint("SetTextI18n", "UseSwitchCompatOrMaterialCode", "CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,10 +49,12 @@ class MainActivity : AppCompatActivity() {
 
         //add code to the button that happens when its clicked
         button?.setOnClickListener {
-            Toast.makeText(this@MainActivity,
-                "Button Clicked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this@MainActivity,
+                "Button Clicked", Toast.LENGTH_SHORT
+            ).show()
         }
-            welcomeTxt.text = "Welcome ,${editNameTxt.text}!"
+        welcomeTxt.text = "Welcome ,${editNameTxt.text}!"
 
         // get the switch that turns on the Zulu greeting
         val zuluBtn = findViewById<Switch>(R.id.switchBtn)
@@ -65,14 +84,13 @@ class MainActivity : AppCompatActivity() {
                 // easter egg for Sam/Samantha
                 greeting = "Hello ,${editNameTxt.text}!"
 
-        }
+            }
 
-        }
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+                insets
+            }
         }
-    }
-}
+    }}
